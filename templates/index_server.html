@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>goshort.in | index a short url.</title>
+  <head>
+    <script
+      data-ad-client="ca-pub-5163317056618264"
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+    ></script>
+    <meta
+      name="google-site-verification"
+      content="D0HU3MUYTVs1gApM8Nqry__GkvLoGxfr5tuPX6oJUr0"
+    />
+  </head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="shortcut icon"
+    href="{{ url_for('static', filename='favicon.ico') }}"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/tachyons/css/tachyons.min.css"
+  />
+  <body>
+    {% include 'nav.html'%} {% if dummy %} {% include '404.html'%} {%endif%} {%
+    include 'short.html'%} {% include 'footer.html'%}
+  </body>
+</html>

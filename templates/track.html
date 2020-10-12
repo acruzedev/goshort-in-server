@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>goshort.in | track a short url.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/tachyons/css/tachyons.min.css"
+  />
+
+  <body>
+    {% include 'nav.html'%}
+    <div class="pa4-l fl w-100 pa3">
+      <div class=" mw7 center pa3 br2-ns">
+        <fieldset class="cf bn ma0 pa0">
+          <div class="cf">
+            <input
+              class="f6 f5-l input-reset bn fl pa2  w-100 w-75-m w-80-l br1-ns sans-serif"
+              type="text"
+              style="border-block-color: black; border-style: groove;   border-color: black;border-width: thin;"
+              autofocus
+              name="url"
+              value=""
+              id="url"
+              placeholder="Enter tracking url like goshort.in/8ZcqH4"
+            />
+            <input
+              class="f6 f5-l button-reset fl pv2 tc grow bn bg-dark-pink white pointer w-100 w-25-m w-20-l br1-ns sans-serif "
+              onclick="track_url()"
+
+              type="submit"
+              value="Track"
+            />
+            <p class="f3 sans-serif dark-red" style="margin-top: 3em;" id="error_block">   </p>
+            <a
+              class="f6 f5-l button-reset fl pv2 tc grow bn bg-dark-pink white pointer w-100 w-25-m w-40-l br1-ns sans-serif"
+              style="text-decoration: none;"
+              href="{{url_for('index')}}"
+            >
+              Make another url short</a
+            >
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    {% include 'footer.html'%}
+    <script>
+      function track_url(){
+            console.log("track_url");
+            document.getElementById("error_block").innerHTML ="";
+            let hash= document.getElementById("url").value;
+            hash =hash.split(/\//ig);
+            
+            if (hash === ""  ||  hash.length <1 ){
+              document.getElementById("error_block").innerHTML = "wrong url.";
+              return;
+            }
+            console.log(hash);
+            hash= hash[1];
+            fetch('https://goshort.in/api/v1/track?hash='+hash, {
+              method: 'get',
+              mode: 'no-cors'
+            })
+            .then(response =>{
+              return response.json();
+            } )
+            .then(jsonData =>{
+              if(jsonData["status"] == "error"){
+                document.getElementById("error_block").innerHTML = "Wrong url.";
+                return;
+              }else if(jsonData["status"] == "success"){
+                document.getElementById("error_block").innerHTML = jsonData["message"];
+                return;
+              }
+            })
+            .catch(err => {
+             console.log(err);
+            });
+      }
+    </script>
+  </body>
+</html>

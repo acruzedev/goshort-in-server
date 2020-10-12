@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> 
+    <script data-ad-client="ca-pub-5163317056618264" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><meta name="google-site-verification" content="D0HU3MUYTVs1gApM8Nqry__GkvLoGxfr5tuPX6oJUr0" /></head>
+  
+<title>goshort.in | track a short url.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css" />
+
+<body>{% include 'nav.html'%} {% if dummy %} {% include '404.html'%} {% else %} {{count}}
+	<div class="pa4-l fl w-100 pa3">
+		<div class=" mw7 center pa3 br2-ns">
+			<fieldset class="cf bn ma0 pa0">
+				<legend class="pa0 f5 f2-ns mb2 black-60 mid-gray sans-serif">Total Clicks : </legend>
+				<div class="cf"> 
+          <a class="f6 sans-serif dark-red" style="margin-top:0em;" href="https://goshort.in/{{hash}}">
+              https://goshort.in/{{hash}}</a
+            >
+
+            <p class="f6 sans-serif dark-red" style="margin-top: 3em;"></p>
+            <a
+              class="f6 f5-l button-reset fl pv2 tc grow bn bg-dark-pink white pointer w-100 w-25-m w-40-l br1-ns sans-serif"
+              style="text-decoration: none;"
+              href="{{url_for('index')}}"
+            >
+              Make another url short</a
+            >
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    {%endif%} {% include 'footer.html'%}
+
+    <script>
+
+      function track_url(){
+        console.log("track_url");
+
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<article class="fl w-100 pa3">
+    <header class="mw7 center pa3 br2-ns  sans-serif">
+        <h3 class="f4 f3-l fw4 mb2 mt2 mt0-ns sans-serif "> <b>goshort.in</b> is a free tool to shorten a URL or reduce a link.
+          Use our URL Shortener to create a shortened link making it easy to remember.</h3> It is serve as url shortener for <b>pinmyblogs.com</b> .
+          <a href="http://pinmyblogs.com">more</a>
+      
+    </header>
+  </article>
+
+
+  
+
+  <article class="fl w-100 pa3">
+    <header class="mw7 center pa3 br2-ns  sans-serif">
+        <h3 class="f4 f3-l fw4 mb2 mt2 mt0-ns "><b class="sans-serif ">Shorten, share and track.</b></h3>
+        Your shortened URLs can be used in publications, advertisements, blogs, forums, e-mails, instant messages, and other locations. 
+        Track statistics for your business and projects by monitoring the number of hits from your URL with the click counter,
+         you do not have to register.
+      
+    </header>
+  </article>
+
+  <article class="fl w-100 pa3">
+    <header class="mw7 center pa3 br2-ns  sans-serif">
+        <h3 class="f4 f3-l fw4 mb3 mt4 mt0-ns sans-serif "><b>Terms of use.</b></h3>
+        goshort.in was created as a free service to make posting long URLs easier, 
+        and may only be used for actual URLs. Using it for spamming or illegal purposes is
+         forbidden and any such use will result in the goshort.in being disabled and you may be reported to all
+          ISPs involved and to the proper governmental agencies. 
+        This service is provided without warranty of any kind.
+      
+    </header>
+  </article>
+
+
+  <footer class="pv4 ph3   ph5-m ph6-l mid-gray">
+    <small class="f6 db tc sans-serif">© 2020 <b class="ttu sans-serif">A cruze developer</b>.</small>
+    <div class="tc mt3">
+      <a class="link   f6 f5-l  mr3 mr4-l" href="{{url_for('privacy')}}"  style="color:black" title="Privacy">Privacy</a>
+      <a class="link   f6 f5-l  mr3 mr4-l" href="{{url_for('terms_of_use')}}"  style="color:black" title="Privacy">Terms Of Use</a>
+      <a class="link   f6 f5-l  mr3 mr4-l" href="{{url_for('disclaimer')}}"  style="color:black" title="Privacy">Disclaimer</a>
+      <a class="link   f6 f5-l  mr3 mr4-l" href="{{url_for('contact')}}"  style="color:black" title="Privacy">Contact</a>
+
+
+
+    </div>
+    <div class="tc mt3">
+
+    </div>
+  </footer>
+
+
+
+
+  <script>
+    function copyToClipboard(text) {
+              
+              if (window.clipboardData && window.clipboardData.setData) {
+                return clipboardData.setData("Text", "https://goshort.in/"+text);
+              }
+              else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                var textarea = document.createElement("textarea");
+                textarea.textContent = "https://goshort.in/"+text;
+                textarea.style.position = "fixed";
+                document.body.appendChild(textarea);
+                document.getElementById("cp").innerHTML="Copied";
+                textarea.select();
+                try {
+                  setTimeout(()=>{
+                    document.getElementById("cp").innerHTML="Copy";
+                  }, 1500);
+                  return document.execCommand("copy");
+                }
+                catch (ex) {
+                  console.warn("Copy to clipboard failed.", ex);
+                  return false;
+                }
+                finally {
+                  document.body.removeChild(textarea);
+                }
+    
+        }
+    }
+          </script>
+
+          

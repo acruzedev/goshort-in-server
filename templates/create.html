@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script data-ad-client="ca-pub-5163317056618264" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+     <meta name="google-site-verification" content="D0HU3MUYTVs1gApM8Nqry__GkvLoGxfr5tuPX6oJUr0" /></head>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <title> goshort.in | create a short url.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/tachyons/css/tachyons.min.css"/>
+  <body>
+    {% include 'nav.html'%}
+    <div class="pa4-l fl w-100 pa3">
+      <form class="bg-light-yellow   mw7 center pa3 br2-ns  " action="{{url_for('create')}}" method="GET">
+        <fieldset class="cf bn ma0 pa0">
+          <legend class="pa0 f5 f4-ns mb3 black-60 mid-gray sans-serif" >Enter a long URL to make it short.</legend>
+          <div class="cf">
+
+            <input class="f6 f5-l input-reset bn fl black-80 bg-white pa2 lh-solid w-100 w-75-m w-80-l br1-ns  sans-serif" type="text" name="url"   value="{% if not url  %}{{''}}{% else %}{{ url }}{%endif%}" id="url">
+            <input class="f6 f5-l button-reset fl pv2 tc grow bn bg-dark-pink white pointer w-100 w-25-m w-20-l br1-ns sans-serif " type="submit" value="Make Short">
+            {% if status ==False %}  <p class="f6 sans-serif dark-red" style="margin-top: 3em;">* Wrong url Or  Domain blocked. </p>  {%endif%}
+            {% if status ==True and hash != "" %}  <p class="f6 sans-serif w-80-l " style="margin-top: 3em;">
+               <b class="tu sans-serif "> Short Url : https://goshort.in/{{hash}}</b> <p class="tr sans-serif dim pointer " id="cp" onclick="copyToClipboard('{{hash}}')">Copy</p>
+              </p>
+            {%endif%}
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    {% include 'footer.html'%}
+        </body>
+      </html>
