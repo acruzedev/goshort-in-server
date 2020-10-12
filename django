@@ -1,0 +1,48 @@
+upstream app_server {
+    server unix:/home/django/gunicorn.socket fail_timeout=0;
+}
+
+server {
+    listen 80 ;
+    listen [::]:80 ;
+
+    root /usr/share/nginx/html;
+    index index.html index.htm;
+
+    client_max_body_size 4G;
+    server_name pinmyblogs.com www.pinmyblogs.com;
+
+    keepalive_timeout 5;
+
+    # Your Django project's media files - amend as required
+    location /media  {
+        access_log off;
+        alias /home/django/pinmyblogs/pinmyblogs/media;
+    }
+
+    # your Django project's static files - amend as required
+    location /static {
+	access_log off;
+	add_header Cache-Control public;
+	add_header Pragma public;
+	add_header Vary Accept-Encoding;
+	expires 7d;
+        alias /home/django/pinmyblogs/static;
+    }
+
+    # Proxy the static assests for the Django Admin panel
+    location /static/admin {
+	access_log off;
+       alias /usr/lib/python2.7/dist-packages/django/contrib/admin/static/admin/;
+    }
+
+    location / {
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header Host $host;
+            proxy_redirect off;
+            proxy_buffering off;
+
+            proxy_pass http://app_server;
+    }
+
+}
